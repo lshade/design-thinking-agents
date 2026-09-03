@@ -46,6 +46,7 @@ infra/*.local.json
 # Build and cache artifacts
 .parcel-cache/
 .vite/
+.tsupgrader/
 coverage/
 
 # Editor directories and files
