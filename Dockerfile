@@ -1,0 +1,23 @@
+FROM node:22.12-bookworm-slim AS web-build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --include=optional
+COPY index.html vite.config.ts tsconfig*.json ./
+COPY public ./public
+COPY src ./src
+RUN npm run build
+
+FROM python:3.12-slim AS runtime
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PORT=8000
+
+WORKDIR /app
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install --no-cache-dir -r ./backend/requirements.txt
+
+COPY backend ./backend
+COPY --from=web-build /app/dist ./backend/static
+
+EXPOSE 8000
+CMD ["sh", "-c", "uvicorn backend.app:app --host 0.0.0.0 --port ${PORT}"]

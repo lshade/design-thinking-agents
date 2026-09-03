@@ -1,0 +1,37 @@
+{
+  "name": "design-thinking-agents",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A React and Microsoft Agent Framework starter for visual design-thinking workshops.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0 <23",
+    "npm": ">=10.9.0 <11"
+  },
+  "packageManager": "npm@10.9.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "python -m uvicorn backend.app:app --reload --host 127.0.0.1 --port 8000",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "test:backend": "python -m unittest backend.test_app",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^4.7.0",
+    "oxlint": "^1.79.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "optionalDependencies": {
+    "@oxlint/binding-win32-x64-msvc": "^1.79.0"
+  }
+}

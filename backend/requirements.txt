@@ -1,0 +1,6 @@
+agent-framework==1.13.0
+azure-identity==1.26.0b2
+fastapi==0.139.2
+pydantic==2.13.4
+python-dotenv==1.2.2
+uvicorn[standard]==0.52.1
